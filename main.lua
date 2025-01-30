@@ -67,6 +67,39 @@ function utility:Sort(Table1, Table2)
     --
     return Table3
 end
+
+function utility:Tween(obj, info, properties, callback)
+    local anim = tws:Create(obj, TweenInfo.new(unpack(info)), properties)
+    anim:Play()
+
+    if callback then anim.Completed:Connect(callback) end
+end
+
+function utility:Drag(enabled, obj, dragSpeed)
+    local start, objPosition, dragging
+    obj.InputBegan:Connect(function(input)
+        if input.UserInputType == Enum.UserInputType.MouseButton1 and enabled == true then
+            dragging = true
+            start = input.Position
+            objPosition = obj.Position
+        end
+    end)
+	--
+    obj.InputEnded:Connect(function(input)
+        if input.UserInputType == Enum.UserInputType.MouseButton1 and enabled == true then
+            dragging = false
+        end
+    end)
+	--
+    uis.InputChanged:Connect(function(input)
+        if input.UserInputType == Enum.UserInputType.MouseMovement and enabled == true and
+            dragging then
+            utility:Tween(obj, {dragSpeed}, {
+                Position = UDim2.new(objPosition.X.Scale, objPosition.X.Offset + (input.Position - start).X, objPosition.Y.Scale, objPosition.Y.Offset + (input.Position - start).Y)
+            })
+        end
+    end) 
+end
 -- [[ // UI Functions // ]]
 function library:CreateWindow(Properties)
     Properties = Properties or {}
@@ -87,6 +120,8 @@ function library:CreateWindow(Properties)
             ResetOnSpawn = false,
             ZIndexBehavior = "Global"
         })
+		-- //
+		utility:Drag(Window.Enabled, ScreenGui, 0.1)
         -- //
         local ScreenGui_MainFrame = utility:RenderObject("Frame", {
             AnchorPoint = Vector2.new(0.5, 0.5),
