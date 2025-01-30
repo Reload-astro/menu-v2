@@ -120,8 +120,6 @@ function library:CreateWindow(Properties)
             ResetOnSpawn = false,
             ZIndexBehavior = "Global"
         })
-		-- //
-		utility:Drag(Window.Enabled, ScreenGui, 0.1)
         -- //
         local ScreenGui_MainFrame = utility:RenderObject("Frame", {
             AnchorPoint = Vector2.new(0.5, 0.5),
@@ -134,6 +132,8 @@ function library:CreateWindow(Properties)
             Position = UDim2.new(0.5, 0, 0.5, 0),
             Size = UDim2.new(0, 660, 0, 560)
         })
+		-- //
+		utility:Drag(Window.Enabled, ScreenGui_MainFrame, 0.1)
         -- //
         local ScreenGui_MainFrame_InnerBorder =
             utility:RenderObject("Frame", {
