@@ -1849,32 +1849,56 @@ do -- // Content
 		}
 	
 		local Content_Holder = utility:RenderObject("Frame", {
+			BackgroundColor3 = Color3.fromRGB(0, 0, 0),
 			BackgroundTransparency = 1,
 			Parent = Content.Section.Holder,
-			Size = UDim2.new(1, 0, 0, 30),
-			ZIndex = 3
+			Size = UDim2.new(1, 0, 0, 32),
+			ZIndex = 2
 		})
 	
 		local Content_Holder_Title = utility:RenderObject("TextLabel", {
 			BackgroundTransparency = 1,
 			Parent = Content_Holder,
-			Position = UDim2.new(0, 10, 0, 0),
-			Size = UDim2.new(1, -20, 0, 15),
+			Position = UDim2.new(0, 12, 0, 0),
+			Size = UDim2.new(1, -24, 0, 12),
 			ZIndex = 3,
 			Font = "Code",
-			Text = Content.Name,
+			RichText = true,
+			Text = "<b>" .. Content.Name .. "</b>",
 			TextColor3 = Color3.fromRGB(205, 205, 205),
 			TextSize = 11,
+			TextStrokeTransparency = 1,
 			TextXAlignment = "Left"
 		})
 	
-		local TextBox = utility:RenderObject("TextBox", {
-			BackgroundColor3 = Color3.fromRGB(36, 36, 36),
+		local Textbox_Outline = utility:RenderObject("Frame", {
+			BackgroundColor3 = Color3.fromRGB(12, 12, 12),
+			BorderColor3 = Color3.fromRGB(0, 0, 0),
+			BorderSizePixel = 0,
 			Parent = Content_Holder,
-			Position = UDim2.new(0, 10, 0, 15),
-			Size = UDim2.new(1, -20, 0, 15),
+			Position = UDim2.new(0, 12, 0, 14),
+			Size = UDim2.new(1, -24, 0, 16),
+			ZIndex = 3
+		})
+	
+		local Textbox_Frame = utility:RenderObject("Frame", {
+			BackgroundColor3 = Color3.fromRGB(40, 40, 40),
+			BorderSizePixel = 0,
+			Parent = Textbox_Outline,
+			Position = UDim2.new(0, 1, 0, 1),
+			Size = UDim2.new(1, -2, 1, -2),
+			ZIndex = 4
+		})
+	
+		local TextBox = utility:RenderObject("TextBox", {
+			BackgroundTransparency = 1,
+			Parent = Textbox_Frame,
+			Position = UDim2.new(0, 6, 0, 0),
+			Size = UDim2.new(1, -12, 1, 0),
+			ZIndex = 5,
 			Font = "Code",
 			PlaceholderText = Content.Placeholder,
+			PlaceholderColor3 = Color3.fromRGB(130, 130, 130),
 			TextColor3 = Color3.fromRGB(255, 255, 255),
 			TextSize = 11,
 			TextXAlignment = "Left",
@@ -1904,15 +1928,34 @@ do -- // Content
 		local Content_Holder = utility:RenderObject("Frame", {
 			BackgroundTransparency = 1,
 			Parent = Content.Section.Holder,
-			Size = UDim2.new(1, 0, 0, 30),
+			Size = UDim2.new(1, 0, 0, 28),
+			ZIndex = 2
+		})
+	
+		local Button_Outline = utility:RenderObject("Frame", {
+			BackgroundColor3 = Color3.fromRGB(12, 12, 12),
+			BorderColor3 = Color3.fromRGB(0, 0, 0),
+			BorderSizePixel = 0,
+			Parent = Content_Holder,
+			Position = UDim2.new(0, 12, 0, 5),
+			Size = UDim2.new(1, -24, 0, 20),
 			ZIndex = 3
 		})
 	
+		local Button_Frame = utility:RenderObject("Frame", {
+			BackgroundColor3 = Color3.fromRGB(40, 40, 40),
+			BorderSizePixel = 0,
+			Parent = Button_Outline,
+			Position = UDim2.new(0, 1, 0, 1),
+			Size = UDim2.new(1, -2, 1, -2),
+			ZIndex = 4
+		})
+	
 		local Button = utility:RenderObject("TextButton", {
-			BackgroundColor3 = Color3.fromRGB(36, 36, 36),
-			Parent = Content_Holder,
-			Position = UDim2.new(0, 10, 0, 5),
-			Size = UDim2.new(1, -20, 0, 20),
+			BackgroundTransparency = 1,
+			Parent = Button_Frame,
+			Size = UDim2.new(1, 0, 1, 0),
+			ZIndex = 5,
 			Font = "Code",
 			Text = Content.Name,
 			TextColor3 = Color3.fromRGB(255, 255, 255),
