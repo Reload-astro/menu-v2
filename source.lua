@@ -390,30 +390,6 @@ do
         end
     end
 
-    function utility:Drag(enabled, obj, dragSpeed)
-        local start, objPosition, dragging
-        obj.InputBegan:Connect(function(input)
-            if input.UserInputType == Enum.UserInputType.MouseButton1 and enabled == true then
-                dragging = true
-                start = input.Position
-                objPosition = obj.Position
-            end
-        end)
-    
-        obj.InputEnded:Connect(function(input)
-            if input.UserInputType == Enum.UserInputType.MouseButton1 and enabled == true then
-                dragging = false
-            end
-        end)
-
-        inputservice.InputChanged:Connect(function(input)
-            if input.UserInputType == Enum.UserInputType.MouseMovement and enabled == true and dragging then
-                local anim = tweenService:Create(obj, TweenInfo.new(unpack({dragSpeed})), {Position = UDim2.new(objPosition.X.Scale, objPosition.X.Offset + (input.Position - start).X, objPosition.Y.Scale, objPosition.Y.Offset + (input.Position - start).Y)})
-                anim:Play()
-            end
-        end) 
-    end
-
     function utility:DetectTableChange(indexcallback,newindexcallback)
         if indexcallback == nil then
             warn('DetectTableChange: Argument #1 (indexcallback) is nil, function may not work as expected.')
@@ -1125,8 +1101,7 @@ function library:init()
                     Outline = true;
                     Parent = objs.background;
                 });
-                
-                utility:Drag( library.opening, objs.background, 0.1 )
+
             end
             --------------------
 
@@ -1179,6 +1154,13 @@ function library:init()
                 self.enabled = bool;
                 self.objects.background.Visible = bool;
                 self:Update();
+            end
+        end
+
+        function indicator:SetPosition(udim2)
+            if typeof(udim2) == 'UDim2' then
+                self.position = udim2
+                self.objects.background.Position = udim2;
             end
         end
 
@@ -4680,6 +4662,8 @@ function library:init()
             library.watermark:Update()
         end
     end)
+
+    self.keyIndicator = self.NewIndicator({title = 'Keybinds', pos = newUDim2(0,15,0,325), enabled = true});
     
     self.targetIndicator = self.NewIndicator({title = 'Target Info', pos = newUDim2(0,15,0,350), enabled = false});
     self.targetName = self.targetIndicator:AddValue({key = 'Name     :', value = 'nil'})
@@ -4769,12 +4753,17 @@ function library:CreateSettingsTab(menu)
     mainSection:AddToggle({text = 'Keybinds', flag = 'keybind_indicator', state = true, callback = function(bool)
         library.keyIndicator:SetEnabled(bool);
     end})
+    mainSection:AddSlider({text = 'Position X', flag = 'keybind_indicator_x', min = 0, max = 100, increment = .1, value = .5, callback = function()
+        library.keyIndicator:SetPosition(newUDim2(library.flags.keybind_indicator_x / 100, 0, library.flags.keybind_indicator_y / 100, 0));    
+    end});
+    mainSection:AddSlider({text = 'Position Y', flag = 'keybind_indicator_y', min = 0, max = 100, increment = .1, value = 30, callback = function()
+        library.keyIndicator:SetPosition(newUDim2(library.flags.keybind_indicator_x / 100, 0, library.flags.keybind_indicator_y / 100, 0));    
+    end});
 
-    local themeStrings = { };
+    local themeStrings = {};
     for _,v in next, library.themes do
         table.insert(themeStrings, v.name)
     end
-
     local themeSection = settingsTab:AddSection('Themes', 2);
     local setByPreset = false
     themeSection:AddList({text = 'Presets', flag = 'preset_theme', values = themeStrings, callback = function(newTheme)
