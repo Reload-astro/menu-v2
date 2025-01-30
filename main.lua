@@ -1835,6 +1835,97 @@ do -- // Content
         --
         return Content
     end
+	--
+	function sections:CreateTextbox(Properties)
+		Properties = Properties or {}
+	
+		local Content = {
+			Name = Properties.Name or "New Textbox",
+			Placeholder = Properties.Placeholder or "Type here...",
+			Callback = Properties.Callback or function() end,
+			Window = self.Window,
+			Page = self.Page,
+			Section = self
+		}
+	
+		local Content_Holder = utility:RenderObject("Frame", {
+			BackgroundTransparency = 1,
+			Parent = Content.Section.Holder,
+			Size = UDim2.new(1, 0, 0, 30),
+			ZIndex = 3
+		})
+	
+		local Content_Holder_Title = utility:RenderObject("TextLabel", {
+			BackgroundTransparency = 1,
+			Parent = Content_Holder,
+			Position = UDim2.new(0, 10, 0, 0),
+			Size = UDim2.new(1, -20, 0, 15),
+			ZIndex = 3,
+			Font = "Code",
+			Text = Content.Name,
+			TextColor3 = Color3.fromRGB(205, 205, 205),
+			TextSize = 11,
+			TextXAlignment = "Left"
+		})
+	
+		local TextBox = utility:RenderObject("TextBox", {
+			BackgroundColor3 = Color3.fromRGB(36, 36, 36),
+			Parent = Content_Holder,
+			Position = UDim2.new(0, 10, 0, 15),
+			Size = UDim2.new(1, -20, 0, 15),
+			Font = "Code",
+			PlaceholderText = Content.Placeholder,
+			TextColor3 = Color3.fromRGB(255, 255, 255),
+			TextSize = 11,
+			TextXAlignment = "Left",
+			ClearTextOnFocus = false
+		})
+	
+		utility:CreateConnection(TextBox.FocusLost, function(enterPressed)
+			if enterPressed then
+				Content.Callback(TextBox.Text)
+			end
+		end)
+	
+		return Content
+	end
+	--
+	function sections:CreateButton(Properties)
+		Properties = Properties or {}
+	
+		local Content = {
+			Name = Properties.Name or "New Button",
+			Callback = Properties.Callback or function() end,
+			Window = self.Window,
+			Page = self.Page,
+			Section = self
+		}
+	
+		local Content_Holder = utility:RenderObject("Frame", {
+			BackgroundTransparency = 1,
+			Parent = Content.Section.Holder,
+			Size = UDim2.new(1, 0, 0, 30),
+			ZIndex = 3
+		})
+	
+		local Button = utility:RenderObject("TextButton", {
+			BackgroundColor3 = Color3.fromRGB(36, 36, 36),
+			Parent = Content_Holder,
+			Position = UDim2.new(0, 10, 0, 5),
+			Size = UDim2.new(1, -20, 0, 20),
+			Font = "Code",
+			Text = Content.Name,
+			TextColor3 = Color3.fromRGB(255, 255, 255),
+			TextSize = 11,
+			TextXAlignment = "Center"
+		})
+	
+		utility:CreateConnection(Button.MouseButton1Click, function()
+			Content.Callback()
+		end)
+	
+		return Content
+	end	
     --
     function sections:CreateMultibox(Properties)
         Properties = Properties or {}
