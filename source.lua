@@ -2906,6 +2906,13 @@ function library:init()
                                 window.dropdown:Refresh()
                             end
                         end
+
+                        function list:RefreshValues(value)
+                            list.values = value;
+                            if window.dropdown.selected == list then
+                                window.dropdown:Refresh()
+                            end
+                        end
     
                         tooltip(list);
                         list:Select((data.value or data.selected) or (list.multi and 'none' or list.values[1]), true);
