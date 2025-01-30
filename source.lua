@@ -2779,10 +2779,27 @@ function library:init()
 
                         function list:RefreshValues(value)
                             list.values = value;
+
                             if window.dropdown.selected == list then
                                 window.dropdown:Refresh()
+
+                                local text = (typeof(value) == 'table' and (#value == 0 and "none" or table.concat(value, ', ')) or tostring(value))
+                                local label = list.objects.inputText
+                                label.Text = text
+
+                                if label.TextBounds.X > list.objects.background.Object.Size.X - 10 then
+                                    local split = text:split('')
+                                    for i = 1, #split do
+                                        label.Text = table.concat(split, '', 1, i)
+                                        if label.TextBounds.X > list.objects.background.Object.Size.X - 10 then
+                                            label.Text = label.Text:sub(1, -6) .. '...'
+                                            break
+                                        end
+                                    end
+                                end
                             end
                         end
+                        
     
                         tooltip(list);
                         list:Select((data.value or data.selected) or (list.multi and 'none' or list.values[1]), true);
