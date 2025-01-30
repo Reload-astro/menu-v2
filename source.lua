@@ -44,7 +44,6 @@ local library = {
         ['colorpicker'] = 1100;
         ['watermark'] = 1300;
         ['notification'] = 1400;
-        ['cursor'] = 1500;
     },
     stats = {
         ['fps'] = 0;
@@ -391,6 +390,35 @@ do
         end
     end
 
+    function utility:Drag(obj, dragSpeed)
+        local start, objPosition, dragging
+        obj.InputBegan:Connect(function(input)
+            if input.UserInputType == Enum.UserInputType.MouseButton1 and gui.Enabled == true then
+                dragging = true
+                start = input.Position
+                objPosition = obj.Position
+            end
+        end)
+    
+        obj.InputEnded:Connect(function(input)
+            if input.UserInputType == Enum.UserInputType.MouseButton1 and gui.Enabled == true then
+                dragging = false
+            end
+        end)
+    
+        function utility.tween(obj, info, properties, callback)
+            local anim = tweenService:Create(obj, TweenInfo.new(unpack(info)), properties)
+            anim:Play()
+        end
+
+        inputservice.InputChanged:Connect(function(input)
+            if input.UserInputType == Enum.UserInputType.MouseMovement and gui.Enabled == true and dragging then
+                local anim = tweenService:Create(obj, TweenInfo.new(unpack({dragSpeed})), {Position = UDim2.new(objPosition.X.Scale, objPosition.X.Offset + (input.Position - start).X, objPosition.Y.Scale, objPosition.Y.Offset + (input.Position - start).Y)})
+                anim:Play()
+            end
+        end) 
+    end
+
     function utility:DetectTableChange(indexcallback,newindexcallback)
         if indexcallback == nil then
             warn('DetectTableChange: Argument #1 (indexcallback) is nil, function may not work as expected.')
@@ -697,22 +725,6 @@ function library:init()
         self.images[i] = readfile(self.cheatname..'/assets/'..i..'.oh');
     end
 
-    self.cursor1 = utility:Draw('Triangle', {Filled = true, Color = fromrgb(255,255,255), ZIndex = self.zindexOrder.cursor});
-    self.cursor2 = utility:Draw('Triangle', {Filled = true, Color = fromrgb(85,85,85), self.zindexOrder.cursor-1});
-    local function updateCursor()
-        self.cursor1.Visible = self.open
-        self.cursor2.Visible = self.open
-        if self.cursor1.Visible then
-            local pos = inputservice:GetMouseLocation();
-            self.cursor1.PointA = pos;
-            self.cursor1.PointB = pos + newVector2(16,5);
-            self.cursor1.PointC = pos + newVector2(5,16);
-            self.cursor2.PointA = self.cursor1.PointA + newVector2(0, 0)
-            self.cursor2.PointB = self.cursor1.PointB + newVector2(1, 1)
-            self.cursor2.PointC = self.cursor1.PointC + newVector2(1, 1)
-        end
-    end
-
     local screenGui = Instance.new('ScreenGui');
     if syn then syn.protect_gui(screenGui); end
     screenGui.Parent = game:GetService('CoreGui');
@@ -789,7 +801,6 @@ function library:init()
         if input.UserInputType == Enum.UserInputType.MouseMovement then
             if library.open then
                 mousemove:Fire(inputservice:GetMouseLocation());
-                updateCursor();
 
                 if library.CurrentTooltip ~= nil then
                     local mousePos = inputservice:GetMouseLocation()
@@ -840,7 +851,6 @@ function library:init()
             actionservice:UnbindAction('FreezeMovement');
         end
 
-        updateCursor();
         for _,window in next, self.windows do
             window:SetOpen(bool);
         end
@@ -1084,6 +1094,8 @@ function library:init()
                     ZIndex = z;
                     Parent = indicator.objects.background;
                 })
+
+                utility:Drag( objs.background, 0.1 )
     
                 objs.border1 = utility:Draw('Square', {
                     Size = newUDim2(1,2,1,2);
@@ -1173,13 +1185,6 @@ function library:init()
                 self.enabled = bool;
                 self.objects.background.Visible = bool;
                 self:Update();
-            end
-        end
-
-        function indicator:SetPosition(udim2)
-            if typeof(udim2) == 'UDim2' then
-                self.position = udim2
-                self.objects.background.Position = udim2;
             end
         end
 
@@ -4681,8 +4686,6 @@ function library:init()
             library.watermark:Update()
         end
     end)
-
-    self.keyIndicator = self.NewIndicator({title = 'Keybinds', pos = newUDim2(0,15,0,325), enabled = true});
     
     self.targetIndicator = self.NewIndicator({title = 'Target Info', pos = newUDim2(0,15,0,350), enabled = false});
     self.targetName = self.targetIndicator:AddValue({key = 'Name     :', value = 'nil'})
@@ -4772,21 +4775,15 @@ function library:CreateSettingsTab(menu)
     mainSection:AddToggle({text = 'Keybinds', flag = 'keybind_indicator', state = true, callback = function(bool)
         library.keyIndicator:SetEnabled(bool);
     end})
-    mainSection:AddSlider({text = 'Position X', flag = 'keybind_indicator_x', min = 0, max = 100, increment = .1, value = .5, callback = function()
-        library.keyIndicator:SetPosition(newUDim2(library.flags.keybind_indicator_x / 100, 0, library.flags.keybind_indicator_y / 100, 0));    
-    end});
-    mainSection:AddSlider({text = 'Position Y', flag = 'keybind_indicator_y', min = 0, max = 100, increment = .1, value = 30, callback = function()
-        library.keyIndicator:SetPosition(newUDim2(library.flags.keybind_indicator_x / 100, 0, library.flags.keybind_indicator_y / 100, 0));    
-    end});
 
-    local themeStrings = {"Custom"};
+    local themeStrings = { };
     for _,v in next, library.themes do
         table.insert(themeStrings, v.name)
     end
-    local themeSection = settingsTab:AddSection('Custom Theme', 2);
+
+    local themeSection = settingsTab:AddSection('Themes', 2);
     local setByPreset = false
     themeSection:AddList({text = 'Presets', flag = 'preset_theme', values = themeStrings, callback = function(newTheme)
-        if newTheme == "Custom" then return end
         setByPreset = true
         for _,v in next, library.themes do
             if v.name == newTheme then
