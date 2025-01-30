@@ -5530,17 +5530,4 @@ function library:UpdateColor(ColorType, ColorValue)
     end
 end
 
-
-
-local m_thread = task do
-    function m_thread.spawn_loop(p_time, p_callback)
-        m_thread.spawn(function()
-            while true do
-                p_callback()
-                m_thread.wait(p_time)
-            end
-        end)
-    end
-end
-
 return library, library.pointers, theme -- utility
