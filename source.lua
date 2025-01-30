@@ -1089,8 +1089,6 @@ function library:init()
                     ZIndex = z;
                     Parent = indicator.objects.background;
                 })
-
-                utility:Drag( library.opening, objs.background, 0.1 )
     
                 objs.border1 = utility:Draw('Square', {
                     Size = newUDim2(1,2,1,2);
@@ -1127,7 +1125,8 @@ function library:init()
                     Outline = true;
                     Parent = objs.background;
                 });
-
+                
+                utility:Drag( library.opening, objs.background, 0.1 )
             end
             --------------------
 
