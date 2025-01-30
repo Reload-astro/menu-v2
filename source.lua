@@ -119,7 +119,7 @@ library.themes = {
         }
     },
     {
-        name = 'Nekocheat',
+        name = 'Neko',
         theme = {
             ["Accent"]                    = fromrgb(226, 30, 112);
             ["Background"]                = fromrgb(18,18,18);
@@ -144,110 +144,110 @@ library.themes = {
             ["Risky Text Enabled"]        = fromrgb(255, 41, 41);
         }
     },
-    {
-        name = 'Nekocheat Blue',
-        theme = {
-            ["Accent"]                    = fromrgb(0, 247, 255);
-            ["Background"]                = fromrgb(18,18,18);
-            ["Border"]                    = fromrgb(0,0,0);
-            ["Border 1"]                  = fromrgb(60,60,60);
-            ["Border 2"]                  = fromrgb(18,18,18);
-            ["Border 3"]                  = fromrgb(10,10,10);
-            ["Primary Text"]              = fromrgb(255,255,255);
-            ["Group Background"]          = fromrgb(18,18,18);
-            ["Selected Tab Background"]   = fromrgb(18,18,18);
-            ["Unselected Tab Background"] = fromrgb(18,18,18);
-            ["Selected Tab Text"]         = fromrgb(245,245,245);
-            ["Unselected Tab Text"]       = fromrgb(145,145,145);
-            ["Section Background"]        = fromrgb(18,18,18);
-            ["Option Text 1"]             = fromrgb(255,255,255);
-            ["Option Text 2"]             = fromrgb(255,255,255);
-            ["Option Text 3"]             = fromrgb(255,255,255);
-            ["Option Border 1"]           = fromrgb(50,50,50);
-            ["Option Border 2"]           = fromrgb(0,0,0);
-            ["Option Background"]         = fromrgb(23,23,23);
-            ["Risky Text"]                = fromrgb(175, 21, 21);
-            ["Risky Text Enabled"]        = fromrgb(255, 41, 41);
-        }
-    },
-    {
-        name = 'Fatality',
-        theme = {
-            ['Accent']                    = fromrgb(197,7,83);
-            ['Background']                = fromrgb(25,19,53);
-            ['Border']                    = fromrgb(0,0,0);
-            ['Border 1']                  = fromrgb(60,53,93);
-            ['Border 2']                  = fromrgb(29,23,66);
-            ['Border 3']                  = fromrgb(10,10,10);
-            ['Primary Text']              = fromrgb(235,235,235);
-            ['Group Background']          = fromrgb(29,23,66);
-            ['Selected Tab Background']   = fromrgb(29,23,66);
-            ['Unselected Tab Background'] = fromrgb(25,19,53);
-            ['Selected Tab Text']         = fromrgb(245,245,245);
-            ['Unselected Tab Text']       = fromrgb(145,145,145);
-            ['Section Background']        = fromrgb(25,19,53);
-            ['Option Text 1']             = fromrgb(245,245,245);
-            ['Option Text 2']             = fromrgb(195,195,195);
-            ['Option Text 3']             = fromrgb(145,145,145);
-            ['Option Border 1']           = fromrgb(60,53,93);
-            ['Option Border 2']           = fromrgb(0,0,0);
-            ['Option Background']         = fromrgb(29,23,66);
-            ["Risky Text"]                = fromrgb(175, 21, 21);
-            ["Risky Text Enabled"]        = fromrgb(255, 41, 41);
-        }
-    },
-    {
-        name = 'Gamesense',
-        theme = {
-            ['Accent']                    = fromrgb(147,184,26);
-            ['Background']                = fromrgb(17,17,17);
-            ['Border']                    = fromrgb(0,0,0);
-            ['Border 1']                  = fromrgb(47,47,47);
-            ['Border 2']                  = fromrgb(17,17,17);
-            ['Border 3']                  = fromrgb(10,10,10);
-            ['Primary Text']              = fromrgb(235,235,235);
-            ['Group Background']          = fromrgb(17,17,17);
-            ['Selected Tab Background']   = fromrgb(17,17,17);
-            ['Unselected Tab Background'] = fromrgb(17,17,17);
-            ['Selected Tab Text']         = fromrgb(245,245,245);
-            ['Unselected Tab Text']       = fromrgb(145,145,145);
-            ['Section Background']        = fromrgb(17,17,17);
-            ['Option Text 1']             = fromrgb(245,245,245);
-            ['Option Text 2']             = fromrgb(195,195,195);
-            ['Option Text 3']             = fromrgb(145,145,145);
-            ['Option Border 1']           = fromrgb(47,47,47);
-            ['Option Border 2']           = fromrgb(0,0,0);
-            ['Option Background']         = fromrgb(35,35,35);
-            ["Risky Text"]                = fromrgb(175, 21, 21);
-            ["Risky Text Enabled"]        = fromrgb(255, 41, 41);
-        }
-    },
-    {
-        name = 'Twitch',
-        theme = {
-            ['Accent']                    = fromrgb(169,112,255);
-            ['Background']                = fromrgb(14,14,14);
-            ['Border']                    = fromrgb(0,0,0);
-            ['Border 1']                  = fromrgb(45,45,45);
-            ['Border 2']                  = fromrgb(31,31,35);
-            ['Border 3']                  = fromrgb(10,10,10);
-            ['Primary Text']              = fromrgb(235,235,235);
-            ['Group Background']          = fromrgb(31,31,35);
-            ['Selected Tab Background']   = fromrgb(31,31,35);
-            ['Unselected Tab Background'] = fromrgb(17,17,17);
-            ['Selected Tab Text']         = fromrgb(225,225,225);
-            ['Unselected Tab Text']       = fromrgb(160,170,175);
-            ['Section Background']        = fromrgb(17,17,17);
-            ['Option Text 1']             = fromrgb(245,245,245);
-            ['Option Text 2']             = fromrgb(195,195,195);
-            ['Option Text 3']             = fromrgb(145,145,145);
-            ['Option Border 1']           = fromrgb(45,45,45);
-            ['Option Border 2']           = fromrgb(0,0,0);
-            ['Option Background']         = fromrgb(24,24,27);
-            ["Risky Text"]                = fromrgb(175, 21, 21);
-            ["Risky Text Enabled"]        = fromrgb(255, 41, 41);
-        }
-    }
+    -- {
+    --     name = 'Nekocheat Blue',
+    --     theme = {
+    --         ["Accent"]                    = fromrgb(0, 247, 255);
+    --         ["Background"]                = fromrgb(18,18,18);
+    --         ["Border"]                    = fromrgb(0,0,0);
+    --         ["Border 1"]                  = fromrgb(60,60,60);
+    --         ["Border 2"]                  = fromrgb(18,18,18);
+    --         ["Border 3"]                  = fromrgb(10,10,10);
+    --         ["Primary Text"]              = fromrgb(255,255,255);
+    --         ["Group Background"]          = fromrgb(18,18,18);
+    --         ["Selected Tab Background"]   = fromrgb(18,18,18);
+    --         ["Unselected Tab Background"] = fromrgb(18,18,18);
+    --         ["Selected Tab Text"]         = fromrgb(245,245,245);
+    --         ["Unselected Tab Text"]       = fromrgb(145,145,145);
+    --         ["Section Background"]        = fromrgb(18,18,18);
+    --         ["Option Text 1"]             = fromrgb(255,255,255);
+    --         ["Option Text 2"]             = fromrgb(255,255,255);
+    --         ["Option Text 3"]             = fromrgb(255,255,255);
+    --         ["Option Border 1"]           = fromrgb(50,50,50);
+    --         ["Option Border 2"]           = fromrgb(0,0,0);
+    --         ["Option Background"]         = fromrgb(23,23,23);
+    --         ["Risky Text"]                = fromrgb(175, 21, 21);
+    --         ["Risky Text Enabled"]        = fromrgb(255, 41, 41);
+    --     }
+    -- },
+    -- {
+    --     name = 'Fatality',
+    --     theme = {
+    --         ['Accent']                    = fromrgb(197,7,83);
+    --         ['Background']                = fromrgb(25,19,53);
+    --         ['Border']                    = fromrgb(0,0,0);
+    --         ['Border 1']                  = fromrgb(60,53,93);
+    --         ['Border 2']                  = fromrgb(29,23,66);
+    --         ['Border 3']                  = fromrgb(10,10,10);
+    --         ['Primary Text']              = fromrgb(235,235,235);
+    --         ['Group Background']          = fromrgb(29,23,66);
+    --         ['Selected Tab Background']   = fromrgb(29,23,66);
+    --         ['Unselected Tab Background'] = fromrgb(25,19,53);
+    --         ['Selected Tab Text']         = fromrgb(245,245,245);
+    --         ['Unselected Tab Text']       = fromrgb(145,145,145);
+    --         ['Section Background']        = fromrgb(25,19,53);
+    --         ['Option Text 1']             = fromrgb(245,245,245);
+    --         ['Option Text 2']             = fromrgb(195,195,195);
+    --         ['Option Text 3']             = fromrgb(145,145,145);
+    --         ['Option Border 1']           = fromrgb(60,53,93);
+    --         ['Option Border 2']           = fromrgb(0,0,0);
+    --         ['Option Background']         = fromrgb(29,23,66);
+    --         ["Risky Text"]                = fromrgb(175, 21, 21);
+    --         ["Risky Text Enabled"]        = fromrgb(255, 41, 41);
+    --     }
+    -- },
+    -- {
+    --     name = 'Gamesense',
+    --     theme = {
+    --         ['Accent']                    = fromrgb(147,184,26);
+    --         ['Background']                = fromrgb(17,17,17);
+    --         ['Border']                    = fromrgb(0,0,0);
+    --         ['Border 1']                  = fromrgb(47,47,47);
+    --         ['Border 2']                  = fromrgb(17,17,17);
+    --         ['Border 3']                  = fromrgb(10,10,10);
+    --         ['Primary Text']              = fromrgb(235,235,235);
+    --         ['Group Background']          = fromrgb(17,17,17);
+    --         ['Selected Tab Background']   = fromrgb(17,17,17);
+    --         ['Unselected Tab Background'] = fromrgb(17,17,17);
+    --         ['Selected Tab Text']         = fromrgb(245,245,245);
+    --         ['Unselected Tab Text']       = fromrgb(145,145,145);
+    --         ['Section Background']        = fromrgb(17,17,17);
+    --         ['Option Text 1']             = fromrgb(245,245,245);
+    --         ['Option Text 2']             = fromrgb(195,195,195);
+    --         ['Option Text 3']             = fromrgb(145,145,145);
+    --         ['Option Border 1']           = fromrgb(47,47,47);
+    --         ['Option Border 2']           = fromrgb(0,0,0);
+    --         ['Option Background']         = fromrgb(35,35,35);
+    --         ["Risky Text"]                = fromrgb(175, 21, 21);
+    --         ["Risky Text Enabled"]        = fromrgb(255, 41, 41);
+    --     }
+    -- },
+    -- {
+    --     name = 'Twitch',
+    --     theme = {
+    --         ['Accent']                    = fromrgb(169,112,255);
+    --         ['Background']                = fromrgb(14,14,14);
+    --         ['Border']                    = fromrgb(0,0,0);
+    --         ['Border 1']                  = fromrgb(45,45,45);
+    --         ['Border 2']                  = fromrgb(31,31,35);
+    --         ['Border 3']                  = fromrgb(10,10,10);
+    --         ['Primary Text']              = fromrgb(235,235,235);
+    --         ['Group Background']          = fromrgb(31,31,35);
+    --         ['Selected Tab Background']   = fromrgb(31,31,35);
+    --         ['Unselected Tab Background'] = fromrgb(17,17,17);
+    --         ['Selected Tab Text']         = fromrgb(225,225,225);
+    --         ['Unselected Tab Text']       = fromrgb(160,170,175);
+    --         ['Section Background']        = fromrgb(17,17,17);
+    --         ['Option Text 1']             = fromrgb(245,245,245);
+    --         ['Option Text 2']             = fromrgb(195,195,195);
+    --         ['Option Text 3']             = fromrgb(145,145,145);
+    --         ['Option Border 1']           = fromrgb(45,45,45);
+    --         ['Option Border 2']           = fromrgb(0,0,0);
+    --         ['Option Background']         = fromrgb(24,24,27);
+    --         ["Risky Text"]                = fromrgb(175, 21, 21);
+    --         ["Risky Text Enabled"]        = fromrgb(255, 41, 41);
+    --     }
+    -- }
 }
 
 local blacklistedKeys = {
@@ -4698,7 +4698,9 @@ function library:CreateSettingsTab(menu)
 
     configSection:AddButton({text = 'Load', confirm = true, callback = function()
         library:LoadConfig(library.flags.selectedconfig);
-    end}):AddButton({text = 'Save', confirm = true, callback = function()
+    end})
+    
+    configSection:AddButton({text = 'Save', confirm = true, callback = function()
         library:SaveConfig(library.flags.selectedconfig);
     end})
 
@@ -4709,7 +4711,9 @@ function library:CreateSettingsTab(menu)
         end
         writefile(self.cheatname..'/'..self.gamename..'/configs/'..library.flags.configinput.. self.fileext, http:JSONEncode({}));
         refreshConfigs()
-    end}):AddButton({text = 'Delete', confirm = true, callback = function()
+    end})
+
+    configSection:AddButton({text = 'Delete', confirm = true, callback = function()
         if library:GetConfig(library.flags.selectedconfig) then
             delfile(self.cheatname..'/'..self.gamename..'/configs/'..library.flags.selectedconfig.. self.fileext);
             refreshConfigs()
@@ -4730,9 +4734,9 @@ function library:CreateSettingsTab(menu)
         game:GetService("TeleportService"):Teleport(game.PlaceId);
     end})
 
-    mainSection:AddButton({text = 'Copy Join Script', callback = function()
-        setclipboard(([[game:GetService("TeleportService"):TeleportToPlaceInstance(%s, "%s")]]):format(game.PlaceId, game.JobId))
-    end})
+    -- mainSection:AddButton({text = 'Copy Join Script', callback = function()
+    --     setclipboard(([[game:GetService("TeleportService"):TeleportToPlaceInstance(%s, "%s")]]):format(game.PlaceId, game.JobId))
+    -- end})
 
     mainSection:AddButton({text = "Unload", confirm = true,
        callback = function(bool)
@@ -4745,17 +4749,19 @@ function library:CreateSettingsTab(menu)
 
     mainSection:AddSeparator({text = 'Indicators'});
 
-    mainSection:AddToggle({text = 'Watermark', flag = 'watermark_enabled', state = true,});
+    -- mainSection:AddToggle({text = 'Watermark', flag = 'watermark_enabled', state = true,});
 
-    mainSection:AddSlider({text = 'Custom X', flag = 'watermark_x', suffix = '%', min = 0, max = 100, increment = .1, value = 6});
-    mainSection:AddSlider({text = 'Custom Y', flag = 'watermark_y', suffix = '%', min = 0, max = 100, increment = .1, value = 1});
+    -- mainSection:AddSlider({text = 'Custom X', flag = 'watermark_x', suffix = '%', min = 0, max = 100, increment = .1, value = 6});
+    -- mainSection:AddSlider({text = 'Custom Y', flag = 'watermark_y', suffix = '%', min = 0, max = 100, increment = .1, value = 1});
 
     mainSection:AddToggle({text = 'Keybinds', flag = 'keybind_indicator', state = true, callback = function(bool)
         library.keyIndicator:SetEnabled(bool);
-    end})
+    end});
+
     mainSection:AddSlider({text = 'Position X', flag = 'keybind_indicator_x', min = 0, max = 100, increment = .1, value = .5, callback = function()
         library.keyIndicator:SetPosition(newUDim2(library.flags.keybind_indicator_x / 100, 0, library.flags.keybind_indicator_y / 100, 0));    
     end});
+
     mainSection:AddSlider({text = 'Position Y', flag = 'keybind_indicator_y', min = 0, max = 100, increment = .1, value = 30, callback = function()
         library.keyIndicator:SetPosition(newUDim2(library.flags.keybind_indicator_x / 100, 0, library.flags.keybind_indicator_y / 100, 0));    
     end});
@@ -4764,23 +4770,40 @@ function library:CreateSettingsTab(menu)
     for _,v in next, library.themes do
         table.insert(themeStrings, v.name)
     end
-    local themeSection = settingsTab:AddSection('Themes', 2);
+    local themeSection = settingsTab:AddSection('Theme', 2);
     local setByPreset = false
-    themeSection:AddList({text = 'Presets', flag = 'preset_theme', values = themeStrings, callback = function(newTheme)
-        setByPreset = true
-        for _,v in next, library.themes do
-            if v.name == newTheme then
-                for x, d in pairs(library.options) do
-                    if v.theme[tostring(x)] ~= nil then
-                        d:SetColor(v.theme[tostring(x)])
+    themeSection:AddList({
+        text = 'Presets',
+        flag = 'preset_theme',
+        values = themeStrings,
+        callback = function(newTheme)
+            if newTheme == "Custom" then return end
+            setByPreset = true
+            for _, v in next, library.themes do
+                if v.name == newTheme then
+                    for x, d in pairs(library.options) do
+                        if v.theme[tostring(x)] ~= nil then
+                            d:SetColor(v.theme[tostring(x)])
+                        end
                     end
+                    library:SetTheme(v.theme)
+                    break
                 end
-                library:SetTheme(v.theme)
-                break
             end
+            setByPreset = false
         end
-        setByPreset = false
-    end}):Select('Default');
+    }):Select('Default');
+    table.insert(themeStrings, "Custom")
+
+    for i, v in pairs(library.theme) do
+        themeSection:AddColor({text = i, flag = i, color = library.theme[i], callback = function(c3)
+            library.theme[i] = c3
+            library:SetTheme(library.theme)
+            if not setByPreset and not setByConfig then 
+                library.options.preset_theme:Select('Custom')
+            end
+        end});
+    end
 
     return settingsTab;
 end
