@@ -390,10 +390,10 @@ do
         end
     end
 
-    function utility:Drag(obj, dragSpeed)
+    function utility:Drag(enabled, obj, dragSpeed)
         local start, objPosition, dragging
         obj.InputBegan:Connect(function(input)
-            if input.UserInputType == Enum.UserInputType.MouseButton1 and gui.Enabled == true then
+            if input.UserInputType == Enum.UserInputType.MouseButton1 and enabled == true then
                 dragging = true
                 start = input.Position
                 objPosition = obj.Position
@@ -401,18 +401,13 @@ do
         end)
     
         obj.InputEnded:Connect(function(input)
-            if input.UserInputType == Enum.UserInputType.MouseButton1 and gui.Enabled == true then
+            if input.UserInputType == Enum.UserInputType.MouseButton1 and enabled == true then
                 dragging = false
             end
         end)
-    
-        function utility.tween(obj, info, properties, callback)
-            local anim = tweenService:Create(obj, TweenInfo.new(unpack(info)), properties)
-            anim:Play()
-        end
 
         inputservice.InputChanged:Connect(function(input)
-            if input.UserInputType == Enum.UserInputType.MouseMovement and gui.Enabled == true and dragging then
+            if input.UserInputType == Enum.UserInputType.MouseMovement and enabled == true and dragging then
                 local anim = tweenService:Create(obj, TweenInfo.new(unpack({dragSpeed})), {Position = UDim2.new(objPosition.X.Scale, objPosition.X.Offset + (input.Position - start).X, objPosition.Y.Scale, objPosition.Y.Offset + (input.Position - start).Y)})
                 anim:Play()
             end
@@ -1095,7 +1090,7 @@ function library:init()
                     Parent = indicator.objects.background;
                 })
 
-                utility:Drag( objs.background, 0.1 )
+                utility:Drag( library.opening, objs.background, 0.1 )
     
                 objs.border1 = utility:Draw('Square', {
                     Size = newUDim2(1,2,1,2);
