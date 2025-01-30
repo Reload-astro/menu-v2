@@ -5,7 +5,7 @@ if not game:IsLoaded() then
 end
 
 local function gs(a)
-    return cloneref(game:GetService(a))
+    return game:GetService(a)
 end
 
 -- // Variables
