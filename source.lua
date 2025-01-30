@@ -4730,6 +4730,10 @@ function library:CreateSettingsTab(menu)
         game:GetService("TeleportService"):Teleport(game.PlaceId);
     end})
 
+    mainSection:AddButton({text = 'Remove Voice Chat Ban', confirm = false, callback = function()
+        game:GetService("VoiceChatService"):joinVoice()
+    end})
+
     -- mainSection:AddButton({text = 'Copy Join Script', callback = function()
     --     setclipboard(([[game:GetService("TeleportService"):TeleportToPlaceInstance(%s, "%s")]]):format(game.PlaceId, game.JobId))
     -- end})
