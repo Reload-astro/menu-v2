@@ -4594,12 +4594,12 @@ function library:CreateSettingsTab(menu)
     end});
 
     mainSection:AddButton({text = 'Rejoin Server', confirm = true, callback = function()
-        players.LocalPlayer:Kick('['..library.cheatname..']'..'Rejoining Server')
+        players.LocalPlayer:Kick('['..library.cheatname..']'..' Rejoining Server')
         game:GetService("TeleportService"):TeleportToPlaceInstance(game.PlaceId, game.JobId);
     end})
 
     mainSection:AddButton({text = 'Rejoin Game', confirm = true, callback = function()
-        players.LocalPlayer:Kick('['..library.cheatname..']'..'Rejoining Game')
+        players.LocalPlayer:Kick('['..library.cheatname..']'..' Rejoining Game')
         game:GetService("TeleportService"):Teleport(game.PlaceId);
     end})
 
