@@ -4525,7 +4525,7 @@ function library:init()
     end)
 
     self.keyIndicator = self.NewIndicator({title = 'Keybinds', pos = newUDim2(0,15,0,325), enabled = true});
-    self.watermark = self.NewIndicator({title = 'Watermark', pos = newUDim2(0,15,0,325), enabled = true});
+    
     self.targetIndicator = self.NewIndicator({title = 'Target Info', pos = newUDim2(0,15,0,350), enabled = false});
     self.targetName = self.targetIndicator:AddValue({key = 'Name     :', value = 'nil'})
     self.targetDisplay = self.targetIndicator:AddValue({key = 'DName    :', value = 'nil'})
@@ -4616,10 +4616,17 @@ function library:CreateSettingsTab(menu)
 
     mainSection:AddSeparator({text = 'Indicators'});
 
-    mainSection:AddToggle({text = 'Watermark', flag = 'watermark_enabled', state = true,});
+    mainSection:AddToggle({text = 'Watermark', flag = 'watermark_enable', state = true, callback = function(bool)
+        library.flags.watermark_enabled = bool;
+    end});
 
-    mainSection:AddSlider({text = 'Custom X', flag = 'watermark_x', suffix = '%', min = 0, max = 100, increment = .1, value = 6});
-    mainSection:AddSlider({text = 'Custom Y', flag = 'watermark_y', suffix = '%', min = 0, max = 100, increment = .1, value = 1});
+    mainSection:AddSlider({text = 'Position X', flag = 'watermark_x', min = 0, max = 100, increment = .1, value = .5, callback = function()
+        library.watermark:SetPosition(newUDim2(library.flags.watermark_x / 100, 0, library.flags.watermark_y / 100, 0));    
+    end});
+
+    mainSection:AddSlider({text = 'Position Y', flag = 'watermark_y', min = 0, max = 100, increment = .1, value = 30, callback = function()
+        library.watermark:SetPosition(newUDim2(library.flags.watermark_x / 100, 0, library.flags.watermark_y / 100, 0));    
+    end});
 
     mainSection:AddToggle({text = 'Keybinds', flag = 'keybind_indicator', state = true, callback = function(bool)
         library.keyIndicator:SetEnabled(bool);
