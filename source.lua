@@ -57,6 +57,7 @@ local library = {
     open = false;
     opening = false;
     hasInit = false;
+    color = startupArgs.color or fromrgb(79, 155, 255),
     cheatname = startupArgs.cheatname or 'Title';
     gamename = startupArgs.gamename or 'Unknown';
     fileext = startupArgs.fileext or '.cfg';
@@ -66,7 +67,7 @@ library.themes = {
     {
         name = 'Default',
         theme = {
-            ['Accent']                    = fromrgb(236, 58, 252);
+            ['Accent']                    = library.color;
             ["Background"]                = fromrgb(18,18,18);
             ["Border"]                    = fromrgb(0,0,0);
             ["Border 1"]                  = fromrgb(60,60,60);
