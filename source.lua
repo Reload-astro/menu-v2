@@ -1,8 +1,8 @@
 local startupArgs = ({...})[1] or {}
 
-repeat 
-    wait()
-until game:IsLoaded()
+if not game:IsLoaded() then
+    game.Loaded:Wait()
+end
 
 -- // Variables
 local players = game:GetService('Players')
@@ -17,7 +17,10 @@ local setByConfig = false
 local floor, ceil, huge, pi, clamp = math.floor, math.ceil, math.huge, math.pi, math.clamp
 local c3new, fromrgb, fromhsv = Color3.new, Color3.fromRGB, Color3.fromHSV
 local next, newInstance, newUDim2, newVector2 = next, Instance.new, UDim2.new, Vector2.new
-local executor = (getexecutorname() or 'unknown')
+local isexecutorclosure = isexecutorclosure or is_synapse_function or is_sirhurt_closure or iskrnlclosure;
+local executor = (
+    syn and 'syn' or getexecutorname and getexecutorname() or 'unknown'
+)
 
 local library = {
     windows = {};
@@ -44,10 +47,10 @@ local library = {
         ['ping'] = 0;
     };
     images = {
-        ['gradientp90'] = 'http://www.roblox.com/asset/?id=123783436115050';
-        ['gradientp45'] = 'http://www.roblox.com/asset/?id=134889915300989';
-        ['colorhue'] = 'http://www.roblox.com/asset/?id=107678380788508';
-        ['colortrans'] = 'http://www.roblox.com/asset/?id=84608964940507';
+        ['gradientp90'] = 'https://raw.githubusercontent.com/Reload-astro/menu-v2/refs/heads/main/gradientp90.png';
+        ['gradientp45'] = 'https://raw.githubusercontent.com/Reload-astro/menu-v2/refs/heads/main/gradientp45.png';
+        ['colorhue'] = 'https://raw.githubusercontent.com/Reload-astro/menu-v2/refs/heads/main/colorhue.png';
+        ['colortrans'] = 'https://raw.githubusercontent.com/Reload-astro/menu-v2/refs/heads/main/colortrans.png';
     };
     numberStrings = {['Zero'] = 0, ['One'] = 1, ['Two'] = 2, ['Three'] = 3, ['Four'] = 4, ['Five'] = 5, ['Six'] = 6, ['Seven'] = 7, ['Eight'] = 8, ['Nine'] = 9};
     signal = loadstring(game:HttpGet('https://raw.githubusercontent.com/Reload-astro/menu-v2/refs/heads/main/signal.lua'))();
@@ -552,6 +555,13 @@ function library:init()
         else
             self:SendNotification('Error saving config: '..tostring(e)..'. ('..tostring(name)..')', 5, c3new(1,0,0));
         end
+    end
+
+    for i,v in next, self.images do
+        if not isfile(self.cheatname..'/assets/'..i..'.img') then
+            writefile(self.cheatname..'/assets/'..i..'.img', game:HttpGet(v))
+        end
+        self.images[i] = readfile(self.cheatname..'/assets/'..i..'.img');
     end
 
     local screenGui = Instance.new('ScreenGui');
