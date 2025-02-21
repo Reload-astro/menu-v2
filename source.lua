@@ -579,7 +579,7 @@ function library:init()
                 self:SetOpen(not self.open)
                 task.spawn(function()
                     library.opening = true;
-                    task.wait(.15);
+                    task.wait(0.15);
                     library.opening = false;
                 end)
             end
@@ -750,9 +750,9 @@ function library:init()
 
             notification.gradient = utility:Draw('Image', {
                 Size = newUDim2(1,0,1,0);
-                Data = self.images.gradientp90;
+                ImageId = self.images.gradientp90;
                 Parent = notification.background;
-                Transparency = .5;
+                Transparency = 0.5;
                 ZIndex = z+1;
             })
 
@@ -791,11 +791,11 @@ function library:init()
             self:UpdateNotifications();
             notification.background.Size = newUDim2(0, notification.text.TextBounds.X + 20, 0, 19)
             task.wait();
-            utility:Tween(notification.background, 'Position', newUDim2(0,0,0, 0), .1);
+            utility:Tween(notification.background, 'Position', newUDim2(0,0,0, 0), 0.1);
             task.wait(time);
             for i,v in next, notification do
                 if typeof(v) ~= 'function' then
-                    utility:Tween(v, 'Transparency', 0, .15);
+                    utility:Tween(v, 'Transparency', 0, 0.15);
                 end
             end
             utility:Connection(utility:Tween(notification.background, 'Position', newUDim2(0,-500,0, 0), .25).Completed, (function()
@@ -808,7 +808,7 @@ function library:init()
     function self:UpdateNotifications()
         local i = 0
         for v in next, self.notifications do
-            utility:Tween(v.holder, 'Position', newUDim2(0,0,0, 75 + (i * 30)), .15)
+            utility:Tween(v.holder, 'Position', newUDim2(0,0,0, 75 + (i * 30)), 0.15)
             i += 1
         end
     end
@@ -861,7 +861,7 @@ function library:init()
             })
 
             objs.textlabel = utility:Draw('Text', {
-                Position = newUDim2(.5,0,0,1);
+                Position = newUDim2(0.5,0,0,1);
                 ThemeColor = 'Primary Text';
                 Text = indicator.title;
                 Size = 13;
@@ -1297,7 +1297,7 @@ function library:init()
                 objs.hue = utility:Draw('Image', {
                     Size = newUDim2(0,175,0,10);
                     Position = newUDim2(0,5,0,205);
-                    Data = library.images.colorhue;
+                    ImageId = library.images.colorhue;
                     ZIndex = z+2;
                     Parent = objs.background;
                 })
@@ -1327,7 +1327,7 @@ function library:init()
 
                 objs.trans = utility:Draw('Image', {
                     Size = newUDim2(1,0,1,0);
-                    Data = library.images.colortrans;
+                    ImageId = library.images.colortrans;
                     ZIndex = z+3;
                     Parent = objs.transColor;
                 })
@@ -1410,8 +1410,8 @@ function library:init()
                 })
 
                 objs.rText = utility:Draw('Text', {
-                    Position = newUDim2(.5,0,0,0);
-                    Color = c3new(1,.1,.1);
+                    Position = newUDim2(0.5,0,0,0);
+                    Color = c3new(1,0.1,0.1);
                     Text = 'R';
                     Size = 13;
                     Font = 2;
@@ -1438,8 +1438,8 @@ function library:init()
                 })
 
                 objs.gText = utility:Draw('Text', {
-                    Position = newUDim2(.5,0,0,0);
-                    Color = c3new(.1,1,.1);
+                    Position = newUDim2(0.5,0,0,0);
+                    Color = c3new(0.1,1,0.1);
                     Text = 'G';
                     Size = 13;
                     Font = 2;
@@ -1466,8 +1466,8 @@ function library:init()
                 })
 
                 objs.bText = utility:Draw('Text', {
-                    Position = newUDim2(.5,0,0,0);
-                    Color = c3new(.1,.1,1);
+                    Position = newUDim2(0.5,0,0,0);
+                    Color = c3new(0.1,0.1,1);
                     Text = 'B';
                     Size = 13;
                     Font = 2;
@@ -1736,7 +1736,7 @@ function library:init()
 
                 task.spawn(function()
                     if not bool then
-                        task.wait(.1);
+                        task.wait(0.1);
                     end
                     self.objects.background.Visible = bool;
                 end)
@@ -1745,10 +1745,10 @@ function library:init()
                     if v.Object.Transparency ~= 0 then
                         task.spawn(function()
                             if bool then
-                                utility:Tween(v.Object, 'Transparency', visValues[v] or 1, .1);
+                                utility:Tween(v.Object, 'Transparency', visValues[v] or 1, 0.1);
                             else
                                 visValues[v] = v.Object.Transparency;
-                                utility:Tween(v.Object, 'Transparency', .05, .1);
+                                utility:Tween(v.Object, 'Transparency', .05, 0.1);
                             end
                         end)
                     end
@@ -1980,7 +1980,7 @@ function library:init()
 
                         objs.gradient = utility:Draw('Image', {
                             Size = newUDim2(1,0,1,0);
-                            Data = library.images.gradientp45;
+                            ImageId = library.images.gradientp45;
                             Transparency = .25;
                             ZIndex = z+4;
                             Parent = objs.background;
@@ -2128,7 +2128,7 @@ function library:init()
     
                             objs.gradient = utility:Draw('Image', {
                                 Size = newUDim2(1,0,1,0);
-                                Data = library.images.gradientp45;
+                                ImageId = library.images.gradientp45;
                                 Transparency = .25;
                                 ZIndex = z+4;
                                 Parent = objs.background;
@@ -2490,14 +2490,14 @@ function library:init()
     
                             objs.gradient = utility:Draw('Image', {
                                 Size = newUDim2(1,0,1,0);
-                                Data = library.images.gradientp90;
+                                ImageId = library.images.gradientp90;
                                 Transparency = .65;
                                 ZIndex = z+4;
                                 Parent = objs.background;
                             })
     
                             objs.text = utility:Draw('Text', {
-                                Position = newUDim2(.5,0,0,-1);
+                                Position = newUDim2(0.5,0,0,-1);
                                 ThemeColor = 'Option Text 3';
                                 Size = 13;
                                 Font = 2;
@@ -2530,10 +2530,10 @@ function library:init()
                                             if library.numberStrings[inp.KeyCode.Name] then
                                                 local number = library.numberStrings[inp.KeyCode.Name];
                                                 inputNumber = inputNumber..tostring(number);
-                                                objs.text.Text = string.format("%.14g", slider.value) .. tostring(slider.suffix) .. "/" .. slider.max .. tostring(slider.suffix) .. " [" .. inputNumber .. "]";
+                                                objs.text.Text = string.format("%0.14g", slider.value) .. tostring(slider.suffix) .. "/" .. slider.max .. tostring(slider.suffix) .. " [" .. inputNumber .. "]";
                                             elseif inp.KeyCode == Enum.KeyCode.Backspace then
                                                 inputNumber = inputNumber:sub(1,-2);
-                                                objs.text.Text = string.format("%.14g", slider.value)..tostring(slider.suffix)..'/'..slider.max..tostring(slider.suffix)..' ['..inputNumber..']';
+                                                objs.text.Text = string.format("%0.14g", slider.value)..tostring(slider.suffix)..'/'..slider.max..tostring(slider.suffix)..' ['..inputNumber..']';
                                             elseif inp.KeyCode == Enum.KeyCode.Return then
                                                 slider:SetValue(tonumber(inputNumber))
                                                 slider.focused = false;
@@ -2577,7 +2577,7 @@ function library:init()
     
                                 self.value = newValue;
                                 library.flags[self.flag] = newValue;
-                                self.objects.text.Text = string.format("%.14g",newValue)..tostring(self.suffix)..'/'..self.max..tostring(self.suffix);
+                                self.objects.text.Text = string.format("%0.14g",newValue)..tostring(self.suffix)..'/'..self.max..tostring(self.suffix);
                                 self.objects.text.ThemeColor = (self.min < 0 and newValue == 0 or newValue == self.min)  and (self.risky and 'Risky Text' or 'Option Text 3') or (self.risky and 'Risky Text Enabled' or 'Option Text 1');
     
                                 if not nocallback then
@@ -2661,7 +2661,7 @@ function library:init()
     
                             objs.gradient = utility:Draw('Image', {
                                 Size = newUDim2(1,0,1,0);
-                                Data = library.images.gradientp90;
+                                ImageId = library.images.gradientp90;
                                 Transparency = .65;
                                 ZIndex = z+4;
                                 Parent = objs.background;
@@ -2864,7 +2864,7 @@ function library:init()
 
                         objs.gradient = utility:Draw('Image', {
                             Size = newUDim2(1,0,1,0);
-                            Data = library.images.gradientp90;
+                            ImageId = library.images.gradientp90;
                             Transparency = .65;
                             ZIndex = z+4;
                             Parent = objs.background;
@@ -2897,7 +2897,7 @@ function library:init()
                         })
 
                         objs.plusText = utility:Draw('Text', {
-                            Position = newUDim2(.5,0,0,-1);
+                            Position = newUDim2(0.5,0,0,-1);
                             ThemeColor = 'Option Text 3';
                             Text = '+';
                             Size = 13;
@@ -2909,7 +2909,7 @@ function library:init()
                         })
 
                         objs.minusText = utility:Draw('Text', {
-                            Position = newUDim2(.5,0,0,-1);
+                            Position = newUDim2(0.5,0,0,-1);
                             ThemeColor = 'Option Text 3';
                             Text = '-';
                             Size = 13;
@@ -2952,10 +2952,10 @@ function library:init()
                                         if library.numberStrings[inp.KeyCode.Name] then
                                             local number = library.numberStrings[inp.KeyCode.Name];
                                             inputNumber = inputNumber..tostring(number);
-                                            objs.text.Text = slider.text..': '..string.format("%.14g",slider.value)..tostring(slider.suffix)..' ['..inputNumber..']';
+                                            objs.text.Text = slider.text..': '..string.format("%0.14g",slider.value)..tostring(slider.suffix)..' ['..inputNumber..']';
                                         elseif inp.KeyCode == Enum.KeyCode.Backspace then
                                             inputNumber = inputNumber:sub(1,-2);
-                                            objs.text.Text = slider.text..': '..string.format("%.14g",slider.value)..tostring(slider.suffix)..' ['..inputNumber..']';
+                                            objs.text.Text = slider.text..': '..string.format("%0.14g",slider.value)..tostring(slider.suffix)..' ['..inputNumber..']';
                                         elseif inp.KeyCode == Enum.KeyCode.Return then
                                             slider:SetValue(tonumber(inputNumber))
                                             slider.focused = false;
@@ -3002,7 +3002,7 @@ function library:init()
 
                             self.value = newValue;
                             library.flags[self.flag] = newValue;
-                            self.objects.text.Text = slider.text..': '..string.format("%.14g",newValue)..tostring(self.suffix);
+                            self.objects.text.Text = slider.text..': '..string.format("%0.14g",newValue)..tostring(self.suffix);
                             self.objects.text.ThemeColor = (self.min < 0 and newValue == 0 or newValue == self.min)  and (self.risky and 'Risky Text' or 'Option Text 3') or (self.risky and 'Risky Text Enabled' or 'Option Text 1');
 
                             if not nocallback then
@@ -3094,14 +3094,14 @@ function library:init()
 
                         objs.gradient = utility:Draw('Image', {
                             Size = newUDim2(1,0,1,0);
-                            Data = library.images.gradientp90;
+                            ImageId = library.images.gradientp90;
                             Transparency = .65;
                             ZIndex = z+3;
                             Parent = objs.background;
                         })
 
                         objs.text = utility:Draw('Text', {
-                            Position = newUDim2(.5,0,0,0);
+                            Position = newUDim2(0.5,0,0,0);
                             ThemeColor = 'Option Text 3';
                             Size = 13;
                             Font = 2;
@@ -3229,14 +3229,14 @@ function library:init()
     
                             objs.gradient = utility:Draw('Image', {
                                 Size = newUDim2(1,0,1,0);
-                                Data = library.images.gradientp90;
+                                ImageId = library.images.gradientp90;
                                 Transparency = .65;
                                 ZIndex = z+3;
                                 Parent = objs.background;
                             })
     
                             objs.text = utility:Draw('Text', {
-                                Position = newUDim2(.5,0,0,0);
+                                Position = newUDim2(0.5,0,0,0);
                                 ThemeColor = 'Option Text 3';
                                 Size = 13;
                                 Font = 2;
@@ -3400,7 +3400,7 @@ function library:init()
                         })
 
                         objs.text = utility:Draw('Text', {
-                            Position = newUDim2(.5,0,0,1);
+                            Position = newUDim2(0.5,0,0,1);
                             ThemeColor = 'Option Text 2';
                             Size = 13;
                             Font = 2;
@@ -3420,8 +3420,8 @@ function library:init()
                             local xScale = ( 1- utility:ConvertNumberRange(self.objects.text.TextBounds.X, 0, self.objects.holder.Object.Size.X, 0, 1)) / 2 - (str == '' and 0 or .04)
                             self.objects.line1.Size = newUDim2(xScale, 0, 0, 1)
                             self.objects.line2.Size = newUDim2(xScale, 0, 0, 1)
-                            self.objects.line1.Position = newUDim2(0,1,.5,-1)
-                            self.objects.line2.Position = newUDim2(1 - self.objects.line2.Size.X.Scale,-1,.5,-1)
+                            self.objects.line1.Position = newUDim2(0,1,0.5,-1)
+                            self.objects.line2.Position = newUDim2(1 - self.objects.line2.Size.X.Scale,-1,0.5,-1)
                         end
                     end
 
@@ -3482,7 +3482,7 @@ function library:init()
 
                         objs.gradient = utility:Draw('Image', {
                             Size = newUDim2(1,0,1,0);
-                            Data = library.images.gradientp45;
+                            ImageId = library.images.gradientp45;
                             Transparency = .25;
                             ZIndex = z+4;
                             Parent = objs.background;
@@ -3659,7 +3659,7 @@ function library:init()
 
                         objs.gradient = utility:Draw('Image', {
                             Size = newUDim2(1,0,1,0);
-                            Data = library.images.gradientp90;
+                            ImageId = library.images.gradientp90;
                             Transparency = .65;
                             ZIndex = z+4;
                             Parent = objs.background;
@@ -4057,7 +4057,7 @@ function library:init()
 
                         objs.gradient = utility:Draw('Image', {
                             Size = newUDim2(1,0,1,0);
-                            Data = library.images.gradientp90;
+                            ImageId = library.images.gradientp90;
                             Transparency = .65;
                             ZIndex = z+4;
                             Parent = objs.background;
@@ -4335,7 +4335,7 @@ function library:init()
                 objs.background.Position = newUDim2(0, pos, 0, 0)
 
                 objs.text.ThemeColor = v.selected and 'Selected Tab Text' or 'Unselected Tab Text';
-                objs.text.Position = newUDim2(.5, 0, 0, 3);
+                objs.text.Position = newUDim2(0.5, 0, 0, 3);
 
                 objs.topBorder.ThemeColor = v.selected and 'Accent' or 'Unselected Tab Background';
 
@@ -4490,7 +4490,7 @@ function library:init()
             })
 
             objs.text = utility:Draw('Text', {
-                Position = newUDim2(.5,0,0,2);
+                Position = newUDim2(0.5,0,0,2);
                 ThemeColor = 'Primary Text';
                 Text = 'Watermark Text';
                 Size = 13;
@@ -4611,18 +4611,18 @@ function library:CreateSettingsTab(menu)
 
     mainSection:AddToggle({text = 'Watermark', flag = 'watermark_enabled', state = true,});
 
-    mainSection:AddSlider({text = 'Custom X', flag = 'watermark_x', suffix = '%', min = 0, max = 100, increment = .1, value = 6});
-    mainSection:AddSlider({text = 'Custom Y', flag = 'watermark_y', suffix = '%', min = 0, max = 100, increment = .1, value = 1});
+    mainSection:AddSlider({text = 'Custom X', flag = 'watermark_x', suffix = '%', min = 0, max = 100, increment = 0.1, value = 6});
+    mainSection:AddSlider({text = 'Custom Y', flag = 'watermark_y', suffix = '%', min = 0, max = 100, increment = 0.1, value = 1});
 
     mainSection:AddToggle({text = 'Keybinds', flag = 'keybind_indicator', state = true, callback = function(bool)
         library.keyIndicator:SetEnabled(bool);
     end});
 
-    mainSection:AddSlider({text = 'Position X', flag = 'keybind_indicator_x', min = 0, max = 100, increment = .1, value = .5, callback = function()
+    mainSection:AddSlider({text = 'Position X', flag = 'keybind_indicator_x', min = 0, max = 100, increment = 0.1, value = 0.5, callback = function()
         library.keyIndicator:SetPosition(newUDim2(library.flags.keybind_indicator_x / 100, 0, library.flags.keybind_indicator_y / 100, 0));    
     end});
 
-    mainSection:AddSlider({text = 'Position Y', flag = 'keybind_indicator_y', min = 0, max = 100, increment = .1, value = 30, callback = function()
+    mainSection:AddSlider({text = 'Position Y', flag = 'keybind_indicator_y', min = 0, max = 100, increment = 0.1, value = 30, callback = function()
         library.keyIndicator:SetPosition(newUDim2(library.flags.keybind_indicator_x / 100, 0, library.flags.keybind_indicator_y / 100, 0));    
     end});
 
