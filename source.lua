@@ -47,10 +47,10 @@ local library = {
         ['ping'] = 0;
     };
     images = {
-        ['gradientp90'] = 'https://raw.githubusercontent.com/Reload-astro/menu-v2/refs/heads/main/gradientp90.png';
-        ['gradientp45'] = 'https://raw.githubusercontent.com/Reload-astro/menu-v2/refs/heads/main/gradientp45.png';
-        ['colorhue'] = 'https://raw.githubusercontent.com/Reload-astro/menu-v2/refs/heads/main/colorhue.png';
-        ['colortrans'] = 'https://raw.githubusercontent.com/Reload-astro/menu-v2/refs/heads/main/colortrans.png';
+        ['gradientp90'] = 'rbxassetid://96788368604632';
+        ['gradientp45'] = 'rbxassetid://118641285324757';
+        ['colorhue'] = 'rbxassetid://118850502041248';
+        ['colortrans'] = 'rbxassetid://80023192987575';
     };
     numberStrings = {['Zero'] = 0, ['One'] = 1, ['Two'] = 2, ['Three'] = 3, ['Four'] = 4, ['Five'] = 5, ['Six'] = 6, ['Seven'] = 7, ['Eight'] = 8, ['Nine'] = 9};
     signal = loadstring(game:HttpGet('https://raw.githubusercontent.com/Reload-astro/menu-v2/refs/heads/main/signal.lua'))();
@@ -464,7 +464,6 @@ function library:init()
     local tooltipObjects = {};
 
     makefolder(self.cheatname)
-    makefolder(self.cheatname..'/assets')
     makefolder(self.cheatname..'/'..self.gamename)
     makefolder(self.cheatname..'/'..self.gamename..'/configs');
 
@@ -555,13 +554,6 @@ function library:init()
         else
             self:SendNotification('Error saving config: '..tostring(e)..'. ('..tostring(name)..')', 5, c3new(1,0,0));
         end
-    end
-
-    for i,v in next, self.images do
-        if not isfile(self.cheatname..'/assets/'..i..'.img') then
-            writefile(self.cheatname..'/assets/'..i..'.img', game:HttpGet(v))
-        end
-        self.images[i] = readfile(self.cheatname..'/assets/'..i..'.img');
     end
 
     local screenGui = Instance.new('ScreenGui');
