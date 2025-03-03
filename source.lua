@@ -2605,6 +2605,7 @@ function library:init()
 
                         tooltip(slider);
                         slider:SetValue(slider.value, true);
+                        slider:SetVisible(true)
                         self:UpdateOptions();
                         return slider
                     end
