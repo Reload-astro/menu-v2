@@ -2567,6 +2567,14 @@ function library:init()
     
                         end
                         ----------------------
+
+                        function slider:SetVisible(visible)
+                            for _, obj in pairs(self.objects) do
+                                obj.Visible = visible
+                            end
+                        end
+
+                        ----------------------
     
                         function slider:SetValue(value, nocallback)
                             if typeof(value) == 'number' then
