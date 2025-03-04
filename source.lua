@@ -3004,9 +3004,8 @@ function library:init()
                     function slider:SetVisible(visible)
                         for _, obj in pairs(self.objects) do
                             obj.Visible = visible
+                            obj.holder.Size = visible and newUDim2(1, 0, 0, 20) or newUDim2(0, 0, 0, 0);
                         end
-                        self.objects.holder.Size = visible and newUDim2(1, 0, 0, 20) or newUDim2(0, 0, 0, 0);
-                        self:UpdateOptions();
                     end                    
                     
                     ----------------------
