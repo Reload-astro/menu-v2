@@ -4485,10 +4485,10 @@ function library:init()
             if typeof(udim2) == 'UDim2' then
                 self.position = udim2
                 self.objects.background.Position = udim2;
+                self:Update();
             end
         end
         
-
         do
             local objs = self.watermark.objects;
             local z = self.zindexOrder.watermark;
@@ -4541,7 +4541,7 @@ function library:init()
 
     local lasttick = tick();
     utility:Connection(runservice.RenderStepped, function(step)
-        library.stats.fps = floor(1/step)
+        library.stats.fps = math.floor(1 / runservice.RenderStepped:Wait())
         library.stats.ping = stats.Network.ServerStatsItem["Data Ping"]:GetValue()
         library.stats.sendkbps = stats.DataSendKbps
         library.stats.receivekbps = stats.DataReceiveKbps
