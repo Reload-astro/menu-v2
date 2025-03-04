@@ -2605,7 +2605,6 @@ function library:init()
 
                         tooltip(slider);
                         slider:SetValue(slider.value, true);
-                        slider:SetVisible(true)
                         self:UpdateOptions();
                         return slider
                     end
@@ -3000,6 +2999,14 @@ function library:init()
                         end)
 
                     end
+                    ----------------------
+
+                    function slider:SetVisible(visible)
+                        for _, obj in pairs(self.objects) do
+                            obj.Visible = visible
+                        end
+                    end
+                    
                     ----------------------
 
                     function slider:SetValue(value, nocallback)
