@@ -4535,7 +4535,6 @@ function library:init()
                 Center = true;
                 Parent = objs.background;
             })
-
         end
     end
 
@@ -4562,6 +4561,7 @@ function library:init()
 
     self:SetTheme(library.theme);
     self:SetOpen(true);
+    self.watermark:SetEnabled(true)
     self.hasInit = true
 
 end
