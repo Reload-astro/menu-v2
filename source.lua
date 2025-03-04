@@ -3005,9 +3005,7 @@ function library:init()
                         for _, obj in pairs(self.objects) do
                             obj.Visible = visible
                         end
-                        -- Set the holder's size to 0 when hidden
                         self.objects.holder.Size = visible and newUDim2(1, 0, 0, 20) or newUDim2(0, 0, 0, 0)
-                        self:UpdateOptions() -- Recalculate layout after visibility change
                     end                    
                     
                     ----------------------
