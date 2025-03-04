@@ -1910,23 +1910,31 @@ function library:init()
                 end
 
                 function section:UpdateOptions()
-                    table.sort(self.options, function(a,b)
+                    table.sort(self.options, function(a, b)
                         return a.order < b.order
                     end)
+                
+                    local ySize, padding = 15, 0
+                    local activeOptions = {}
 
-                    local ySize, padding = 15, 0;
-                    for i,option in next, self.options do
-                        option.objects.holder.Visible = option.enabled
+                    for _, option in ipairs(self.options) do
                         if option.enabled then
-                            option.objects.holder.Position = newUDim2(0,0,0,ySize-15);
-                            ySize += option.objects.holder.Object.Size.Y + padding;
+                            table.insert(activeOptions, option)
+                        else
+                            option.objects.holder.Visible = false
                         end
                     end
+                
+                    -- Batch update UI elements
+                    for _, option in ipairs(activeOptions) do
+                        option.objects.holder.Visible = true
+                        option.objects.holder.Position = newUDim2(0, 0, 0, ySize - 15)
+                        ySize += option.objects.holder.Object.Size.Y + padding
+                    end
 
-                    self.objects.background.Size = newUDim2(1,0,0,ySize);
-
+                    self.objects.background.Size = newUDim2(1, 0, 0, ySize)
                 end
-
+                
                 function section:SetEnabled(bool)
                     if typeof(bool) == 'boolean' then
                         section.enabled = bool;
