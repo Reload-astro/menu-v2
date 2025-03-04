@@ -3005,7 +3005,8 @@ function library:init()
                         for _, obj in pairs(self.objects) do
                             obj.Visible = visible
                         end
-                        self.objects.holder.Size = visible and newUDim2(1, 0, 0, 20) or newUDim2(0, 0, 0, 0)
+                        self.objects.holder.Size = visible and newUDim2(1, 0, 0, 20) or newUDim2(0, 0, 0, 0);
+                        self:UpdateOptions();
                     end                    
                     
                     ----------------------
