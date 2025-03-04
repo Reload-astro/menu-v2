@@ -2567,14 +2567,6 @@ function library:init()
     
                         end
                         ----------------------
-
-                        function slider:SetVisible(visible)
-                            for _, obj in pairs(self.objects) do
-                                obj.Visible = visible
-                            end
-                        end
-
-                        ----------------------
     
                         function slider:SetValue(value, nocallback)
                             if typeof(value) == 'number' then
@@ -3006,6 +2998,7 @@ function library:init()
                             obj.Visible = visible
                             obj.holder.Size = visible and newUDim2(1, 0, 0, 20) or newUDim2(0, 0, 0, 0);
                         end
+                        section:UpdateOptions()
                     end                    
                     
                     ----------------------
